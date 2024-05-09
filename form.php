@@ -1,247 +1,314 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-      <!--=============== REMIXICONS ===============-->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <!--=============== CSS ===============-->
-      <link rel="stylesheet" href="assets/css/styles.css">
+   <!--=============== REMIXICONS ===============-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
 
-      <title>AQI</title>
-   </head>
-   <body>
-      <!--==================== HEADER ====================-->
-      <header class="header" id="header">
-         <nav class="nav container">
-            <a href="#" class="nav__logo">AQI Website</a>
+   <!--=============== CSS ===============-->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <link rel="stylesheet" href="assets/css/styles.css">
 
-            <div class="nav__menu" id="nav-menu">
-               <ul class="nav__list">
-                  <!-- <li class="nav__item">
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script>
+      $(document).ready(function() {
+         $('.dropdown__item').hover(function() {
+            $(this).find('.dropdown__menu').stop(true, true).slideDown('fast');
+         }, function() {
+            $(this).find('.dropdown__menu').stop(true, true).slideUp('fast');
+         });
+      });
+   </script>
+
+   <style>
+      .notification {
+         position: fixed;
+         top: 20px;
+         right: 20px;
+         background-color: #4CAF50;
+         color: white;
+         padding: 15px;
+         border-radius: 5px;
+         z-index: 999;
+         animation: slideInRight 0.5s ease forwards, fadeOut 2s ease 1s forwards;
+         pointer-events: none;
+         /* Menambahkan properti pointer-events untuk memastikan notifikasi tidak menginterupsi event mouse */
+      }
+
+      .notification.active {
+         pointer-events: auto;
+         /* Mengaktifkan event mouse ketika notifikasi muncul */
+      }
+
+      @keyframes slideInRight {
+         from {
+            right: -200px;
+            opacity: 0;
+         }
+
+         to {
+            right: 20px;
+            opacity: 1;
+         }
+      }
+
+      @keyframes fadeOut {
+         from {
+            opacity: 1;
+         }
+
+         to {
+            opacity: 0;
+         }
+      }
+   </style>
+   <title>AQI</title>
+</head>
+
+<body>
+   <!--==================== HEADER ====================-->
+   <header class="header" id="header">
+      <nav class="nav container">
+         <a href="index.php" class="nav__logo">AQI Website</a>
+
+         <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+               <!-- <li class="nav__item">
                      <a href="index.php" class="nav__link">Home</a>
                   </li> -->
 
-                  <!--=============== DROPDOWN 2 ===============-->
-                  <li class="dropdown__item">
-                     <div class="nav__link" style="cursor: pointer;"> <!-- Menambahkan properti cursor -->
-                        Navigasi <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                     </div>
+               <!--=============== DROPDOWN 2 ===============-->
+               <li class="dropdown__item">
+                  <div class="nav__link dropdown-toggle" style="cursor: pointer;" data-toggle="dropdown"> <!-- Menambahkan properti cursor -->
+                     Navigasi
+                  </div>
 
-                     <ul class="dropdown__menu">
+                  <ul class="dropdown__menu dropdown-menu">
 
                      <li>
-                           <a href="index.php" class="dropdown__link">
-                              <i class="ri-user-line"></i> Home
-                           </a>                          
-                        </li>
-                        <li>
-                           <a href="index.php" class="dropdown__link">
-                              <i class="ri-user-line"></i> Peringkat
-                           </a>                          
-                        </li>
+                        <a href="index.php" class="dropdown__link" style="text-decoration: none;">
+                           <i class="ri-home-2-line nav__home"></i> Home
+                        </a>
+                     </li>
+                     <li>
+                        <a href="index.php" class="dropdown__link" style="text-decoration: none;">
+                           <i class="ri-trophy-line nav__ranking"></i> Peringkat
+                        </a>
+                     </li>
 
-                        <li>
-                           <a href="index.php" class="dropdown__link">
-                              <i class="ri-lock-line"></i> Informasi
-                           </a>
-                        </li>
+                     <li>
+                        <a href="index.php" class="dropdown__link" style="text-decoration: none;">
+                           <i class="ri-information-line nav__information"></i> Informasi
+                        </a>
+                     </li>
 
-                        <li>
-                           <a href="index.php" class="dropdown__link">
-                              <i class="ri-message-3-line"></i> Berita
-                           </a>
-                        </li>
+                     <li>
+                        <a href="index.php" class="dropdown__link" style="text-decoration: none;">
+                           <i class="ri-lightbulb-line nav__solution"></i> Solusi
+                        </a>
+                     </li>
+                  </ul>
+               </li>
 
-                        <li>
-                           <a href="index.php" class="dropdown__link">
-                              <i class="ri-message-3-line"></i> Solusi
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
+               <li class="nav__item">
+                  <a href="visualisasi.php" class="nav__link" style="text-decoration: none;">Visualisasi</a>
+               </li>
 
-                  <li class="nav__item">
-                     <a href="visualisasi.php" class="nav__link">Visualisasi</a>
-                  </li>
+               <li class="nav__item">
+                  <a href="form.php" class="nav__link" style="text-decoration: none;">Form</a>
+               </li>
 
-                  <li class="nav__item">
-                     <a href="#form" class="nav__link">Form</a>
-                  </li>
-
-                  <!-- <li class="nav__item">
+               <!-- <li class="nav__item">
                      <a href="#" class="nav__link">Contact Me</a>
                   </li> -->
-               </ul>
+            </ul>
 
-               <!-- Close button -->
-               <div class="nav__close" id="nav-close">
-                  <i class="ri-close-line"></i>
-               </div>
+            <!-- Close button -->
+            <div class="nav__close" id="nav-close">
+               <i class="ri-close-line"></i>
             </div>
+         </div>
 
-            <div class="nav__actions">
-               <!-- Search button -->
-               <!-- <i class="ri-search-line nav__search" id="search-btn"></i> -->
+         <div class="nav__actions">
+            <!-- Search button -->
+            <!-- <i class="ri-search-line nav__search" id="search-btn"></i> -->
 
-               <!-- Login button -->
-               <li class="">
-                    <a href="login.php">
-                    <i class="ri-login-box-line nav__login"></i>
-                    </a>
-                </li>
+            <!-- Login button -->
+            <li class="">
+               <a href="login.php">
+                  <i class="ri-login-box-line nav__login"></i>
+               </a>
+            </li>
 
-               <!-- Toggle button -->
-               <div class="nav__toggle" id="nav-toggle">
-                  <i class="ri-menu-line"></i>
-               </div>
+            <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+               <i class="ri-menu-line"></i>
             </div>
-         </nav>
-      </header>
+         </div>
+      </nav>
+   </header>
 
-      <!--==================== SEARCH ====================-->
-      <div class="search" id="search">
-         <form action="" class="search__form">
-            <i class="ri-search-line search__icon"></i>
-            <input type="search" placeholder="What are you looking for?" class="search__input">
-         </form>
+   <!--==================== SEARCH ====================-->
+   <div class="search" id="search">
+      <form action="" class="search__form">
+         <i class="ri-search-line search__icon"></i>
+         <input type="search" placeholder="What are you looking for?" class="search__input">
+      </form>
 
-         <i class="ri-close-line search__close" id="search-close"></i>
-      </div>
+      <i class="ri-close-line search__close" id="search-close"></i>
+   </div>
 
-      <!--==================== LOGIN ====================-->
-      <div class="login" id="login">
-         <form action="" class="login__form">
-            <h2 class="login__title">Log In</h2>
-            
-            <div class="login__group">
-               <div>
-                  <label for="email" class="login__label">Email</label>
-                  <input type="email" placeholder="Write your email" id="email" class="login__input">
-               </div>
-               
-               <div>
-                  <label for="password" class="login__label">Password</label>
-                  <input type="password" placeholder="Enter your password" id="password" class="login__input">
-               </div>
+   <!--==================== LOGIN ====================-->
+   <div class="login" id="login">
+      <form action="" class="login__form">
+         <h2 class="login__title">Log In</h2>
+
+         <div class="login__group">
+            <div>
+               <label for="email" class="login__label">Email</label>
+               <input type="email" placeholder="Write your email" id="email" class="login__input">
             </div>
 
             <div>
-               <!-- <p class="login__signup">
+               <label for="password" class="login__label">Password</label>
+               <input type="password" placeholder="Enter your password" id="password" class="login__input">
+            </div>
+         </div>
+
+         <div>
+            <!-- <p class="login__signup">
                   You do not have an account? <a href="#">Sign up</a>
                </p>
    
                <a href="#" class="login__forgot">
                   You forgot your password
                </a> -->
-   
-               <button type="submit" class="login__button">Log In</button>
-            </div>
-         </form>
 
-         <i class="ri-close-line login__close" id="login-close"></i>
-      </div>
+            <button type="submit" class="login__button btn btn-primary">Log In</button>
+         </div>
+      </form>
 
-      <!--==================== MAIN ====================-->
-<!-- Notifikasi -->
-<div id="notificationBar" class="notification-bar">
-    <span class="message">Form submitted successfully!</span>
-    <span class="close-button" onclick="closeNotification()">×</span>
-</div>
+      <i class="ri-close-line login__close" id="login-close"></i>
+   </div>
+
+   <!--==================== MAIN ====================-->
+   <!-- Notifikasi -->
+   <div id="notificationBar" class="notification-bar">
+      <span class="message">Form submitted successfully!</span>
+      <span class="close-button" onclick="closeNotification()">×</span>
+   </div>
 
 
-<section class="form" id="form">
-    <h2>Form Pengajuan Laporan Polusi Udara</h2>
-    <form action="form.php" method="POST" enctype="multipart/form-data">
-        <label for="nama">Nama:</label><br>
-        <input type="text" id="nama" name="nama" required><br><br>
+   <section class="form" id="form">
+      <h2>Form Pengajuan Laporan Polusi Udara</h2>
+      <form action="form.php" method="POST" enctype="multipart/form-data">
+         <label for="nama">Nama:</label><br>
+         <input type="text" id="nama" name="nama" required><br><br>
 
-        <label for="telepon">Nomor Telepon:</label><br>
-        <input type="tel" id="telepon" name="telepon" pattern="[0-9]{10,12}" required><br><br>
+         <label for="telepon">Nomor Telepon:</label><br>
+         <input type="tel" id="telepon" name="telepon" pattern="[0-9]{10,12}" required><br><br>
 
-        <label for="alamat">Alamat:</label><br>
-        <textarea id="alamat" name="alamat" rows="4" required></textarea><br><br>
+         <label for="alamat">Alamat:</label><br>
+         <textarea id="alamat" name="alamat" rows="4" required></textarea><br><br>
 
-        <label for="deskripsi">Deskripsi Masalah:</label><br>
-        <textarea id="deskripsi" name="deskripsi" rows="6" required></textarea><br><br>
+         <label for="deskripsi">Deskripsi Masalah:</label><br>
+         <textarea id="deskripsi" name="deskripsi" rows="6" required></textarea><br><br>
 
-        <label for="file">Upload File:</label><br>
-        <input type="file" id="file" name="file" required><br><br>
+         <label for="file">Upload File:</label><br>
+         <input type="file" id="file" name="file" required><br><br>
 
-        <input type="submit" value="Submit">
-    </form>
+         <input type="submit" value="Submit">
+      </form>
 
-    </section>
+   </section>
 
-    
 
-<?php
-// Konfigurasi database
-$host = "localhost"; // Host database
-$username = "root"; // Username database
-$password = ""; // Password database
-$database = "pa_web"; // Nama database
 
-// Koneksi ke database
-$conn = new mysqli($host, $username, $password, $database);
+   <?php
+   // Konfigurasi database
+   $host = "localhost"; // Host database
+   $username = "root"; // Username database
+   $password = ""; // Password database
+   $database = "pa_web"; // Nama database
 
-// Periksa koneksi
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+   // Koneksi ke database
+   $conn = new mysqli($host, $username, $password, $database);
 
-// Variabel untuk menyimpan notifikasi
-$notification = "";
+   // Periksa koneksi
+   if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+   }
 
-// Tangkap data dari formulir
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nama = $_POST['nama'];
-    $telepon = $_POST['telepon'];
-    $alamat = $_POST['alamat'];
-    $deskripsi = $_POST['deskripsi'];
+   // Variabel untuk menyimpan notifikasi
+   $notification = "";
 
-    // Upload file ke server
-    $target_dir = "uploads/"; // Direktori tempat menyimpan file
+   // Tangkap data dari formulir
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      $nama = $_POST['nama'];
+      $telepon = $_POST['telepon'];
+      $alamat = $_POST['alamat'];
+      $deskripsi = $_POST['deskripsi'];
 
-    // Cek apakah direktori uploads/ sudah ada
-    if (!is_dir($target_dir)) {
-        // Jika belum ada, buat direktori uploads/
-        mkdir($target_dir, 0777, true); // Mode 0777 memberikan izin penuh
-    }
+      // Upload file ke server
+      $target_dir = "uploads/"; // Direktori tempat menyimpan file
 
-    $target_file = $target_dir . basename($_FILES["file"]["name"]);
+      // Cek apakah direktori uploads/ sudah ada
+      if (!is_dir($target_dir)) {
+         // Jika belum ada, buat direktori uploads/
+         mkdir($target_dir, 0777, true); // Mode 0777 memberikan izin penuh
+      }
 
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        $notification = "File ". basename($_FILES["file"]["name"]). " berhasil diunggah.";
-    } else {
-        $notification = "Terjadi kesalahan saat mengunggah file.";
-    }
+      $target_file = $target_dir . basename($_FILES["file"]["name"]);
 
-    // Simpan data ke database jika file berhasil diunggah
-    if ($notification === "File ". basename($_FILES["file"]["name"]). " berhasil diunggah.") {
-        $sql = "INSERT INTO laporan (nama, telepon, alamat, file, deskripsi) VALUES ('$nama', '$telepon', '$alamat', '$target_file', '$deskripsi')";
+      if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+         $notification = "File " . basename($_FILES["file"]["name"]) . " berhasil diunggah.";
+      } else {
+         $notification = "Terjadi kesalahan saat mengunggah file.";
+      }
 
-        if ($conn->query($sql) === TRUE) {
+      // Simpan data ke database jika file berhasil diunggah
+      if ($notification === "File " . basename($_FILES["file"]["name"]) . " berhasil diunggah.") {
+         $sql = "INSERT INTO laporan (nama, telepon, alamat, file, deskripsi) VALUES ('$nama', '$telepon', '$alamat', '$target_file', '$deskripsi')";
+
+         if ($conn->query($sql) === TRUE) {
             $notification .= " Laporan berhasil disimpan.";
-        } else {
+         } else {
             $notification = "Error: " . $sql . "<br>" . $conn->error;
-        }
-    }
-}
+         }
+      }
+   }
 
-// Tutup koneksi
-$conn->close();
+   // Tutup koneksi
+   $conn->close();
 
-// Tampilkan notifikasi jika ada
-if (!empty($notification)) {
-    echo "<div class='notification'>$notification</div>";
-}
-?>
+   // Tampilkan notifikasi jika ada
+   if (!empty($notification)) {
+      echo "<div class='notification'>$notification</div>";
+   }
+   ?>
 
 
-  <!--=============== MAIN JS ===============-->
-  <script src="assets/js/main.js"></script>
-   </body>
+   <!--=============== MAIN JS ===============-->
+   <script src="assets/js/main.js"></script>
+
+   <script>
+      // Mendapatkan elemen notifikasi
+      var notification = document.getElementById('notificationBar');
+
+      // Menambahkan kelas 'active' saat notifikasi muncul
+      notification.classList.add('active');
+   </script>
+
+   <script>
+      // Mendapatkan elemen notifikasi
+      var notification = document.getElementById('notificationBar');
+
+      // Menghapus kelas 'active' saat notifikasi hilang
+      notification.classList.remove('active');
+   </script>
+</body>
+
 </html>

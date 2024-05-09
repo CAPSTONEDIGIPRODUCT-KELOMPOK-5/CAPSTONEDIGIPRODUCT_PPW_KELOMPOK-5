@@ -1,4 +1,11 @@
+<?php 
+   session_start();
 
+   include("php/config.php");
+   if(!isset($_SESSION['valid'])){
+    header("Location: login.php");
+   }
+?>
 
 <?php
 $submitted = false; // Flag to check if the form has been submitted
@@ -148,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         form button[type="submit"] {
-            background-color: hsl(230, 75%, 15%);
+            background-color: #007bff;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -157,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         form button[type="submit"]:hover {
-            background-color: hsl(230, 75%, 15%);
+            background-color: #007bff;
         }
 
         button[type="button"] {
@@ -175,7 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
     .no-print {
-        background-color: hsl(230, 75%, 15%);
+        background-color: #007bff;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -184,7 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     .no-print:hover {
-        background-color: hsl(230, 75%, 15%);
+        background-color: #007bff;
     }
 
     @media print {

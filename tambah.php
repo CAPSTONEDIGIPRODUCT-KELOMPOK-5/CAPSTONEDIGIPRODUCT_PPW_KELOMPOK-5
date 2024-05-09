@@ -1,4 +1,11 @@
+<?php 
+   session_start();
 
+   include("php/config.php");
+   if(!isset($_SESSION['valid'])){
+    header("Location: login.php");
+   }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +62,7 @@
         }
 
         form button[type="submit"] {
-            background-color: hsl(230, 75%, 15%);
+            background-color: #007bff;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -64,7 +71,7 @@
         }
 
         form button[type="submit"]:hover {
-            background-color: hsl(230, 75%, 15%);
+            background-color: #007bff;
         }
 
         button[type="button"] {

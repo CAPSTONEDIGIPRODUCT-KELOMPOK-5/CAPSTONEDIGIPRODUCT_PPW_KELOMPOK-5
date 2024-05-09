@@ -54,7 +54,7 @@ body {
 
 .btn {
     height: 35px;
-    background: hsl(230, 75%, 15%);
+    background: #007bff;
     border: 0;
     border-radius: 5px;
     color: #fff;

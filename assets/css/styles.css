@@ -269,7 +269,8 @@ img {
 /*=============== SEARCH ===============*/
 .search__form {
   display: flex;
-  align-items: center;
+  
+  
   column-gap: .5rem;
   background-color: var(--container-color);
   box-shadow: 0 8px 32px hsla(230, 75%, 15%, .2);
@@ -414,14 +415,14 @@ img {
 .informasi h1 {
   margin-bottom: 5px; /* Memberi jarak 10px dari bawah elemen h1 */
   font-size: 30px; /* Ukuran font h1 */
-  color: var(--title-color);
+  color: black;
   text-align: center;
 }
 
 .informasi h3 {
   margin-bottom: 10px; /* Memberi jarak 10px dari bawah elemen h3 */
   font-size: 18px; /* Ukuran font h3 */
-  color: var(--title-color);
+  color: black;
   text-align: center;
 }
 
@@ -512,6 +513,15 @@ tr:nth-child(5) td:nth-child(2) span {
     display: flex; /* Menggunakan tata letak flexbox */
 }
 
+.fakta h1 {
+  color: black;
+}
+
+.fakta p {
+  text-align: justify;
+  color: black;
+}
+
 .content {
     max-width: calc(50% - 10px);
     margin-bottom: 5px; /* Jarak 5px dari bawah elemen h1 */
@@ -529,7 +539,8 @@ tr:nth-child(5) td:nth-child(2) span {
     overflow: hidden; /* Memastikan border-radius berfungsi dengan baik */
 }
 
-.category-table-container table {
+.category-table-containers table {
+  margin-left: -7px;
     width: 100%; /* Biarkan tabel mengambil lebar maksimal */
     background-color: #ffffff; /* Warna latar belakang tabel */
     color: #000000; /* Warna teks dalam tabel */
@@ -614,13 +625,25 @@ tr:nth-child(5) td:nth-child(2) span {
   flex-direction: row; /* Memanjangkan konten ke samping */
 }
 
+.solusi h2 {
+  color: black;
+}
+
+.solusi p {
+  color: black;
+}
+
+.solusi li {
+  color: black;
+}
+
 .solution-container {
   display: flex;
   align-items: center;
 }
 
 .solution-container img {
-  max-width: 200px;
+  max-width: 250px;
   margin-right: 20px;
 }
 
@@ -705,6 +728,84 @@ tr:nth-child(5) td:nth-child(2) span {
   margin-right: 20px;
 }
 
+/* VISUALISASI */
+.visualisasi {
+  margin-top: 120px;
+  margin-bottom: 70px;
+  text-align: justify; /* Teks rata kiri */
+  padding-left: 20px; /* Padding kiri 20px */
+  margin-left: 30px; /* Margin kiri 30px */
+  margin-right: 20px; /* Margin kanan 20px */
+  display: flex; /* Menggunakan tata letak flexbox */
+  justify-content: flex-start; /* Justifikasi ke kiri */
+  flex-direction: row; /* Memanjangkan konten ke samping */
+}
+
+.visualisasi1 {
+  margin-top: 10px;
+  margin-bottom: 70px;
+  text-align: justify; /* Teks rata kiri */
+  padding-left: 20px; /* Padding kiri 20px */
+  margin-left: 30px; /* Margin kiri 30px */
+  margin-right: 20px; /* Margin kanan 20px */
+  display: flex; /* Menggunakan tata letak flexbox */
+  justify-content: flex-start; /* Justifikasi ke kiri */
+  flex-direction: row; /* Memanjangkan konten ke samping */
+}
+
+.visualisasi-container {
+  display: flex;
+  align-items: center;
+}
+
+.visualisasi-container img {
+  max-width: 500px;
+  margin-right: 20px;
+}
+
+.visualisasi-content {
+  flex-grow: 1; /* Konten akan memanjang sesuai lebar layar */
+  margin-right: 30px; /* Jarak dari tepi kanan */
+}
+
+.visualisasi-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: hsl(230, 75%, 15%);
+}
+
+.visualisasi-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: hsl(230, 75%, 15%);
+}
+
+.visualisasi-content ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+  color: hsl(230, 75%, 15%);
+}
+
+.visualisasi-content li {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: hsl(230, 75%, 15%);
+}
+
+.visualisasi .animated-box {
+  animation-duration: 1s;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
 
 
 
@@ -746,14 +847,14 @@ tr:nth-child(5) td:nth-child(2) span {
 }
 
 .form input[type="submit"] {
-  background-color: hsl(230, 75%, 15%); /* Warna latar belakang tombol submit */
+  background-color: #007bff; /* Warna latar belakang tombol submit */
   color: white; /* Warna teks tombol submit */
   cursor: pointer; /* Mengubah kursor menjadi tanda pointer saat dihover */
   transition: background-color 0.3s; /* Transisi saat hover */
 }
 
 .form input[type="submit"]:hover {
-  background-color: hsl(230, 75%, 15%); /* Warna latar belakang tombol submit saat dihover */
+  background-color: #007bff; /* Warna latar belakang tombol submit saat dihover */
 }
 
 .notification-bar {
@@ -779,6 +880,28 @@ tr:nth-child(5) td:nth-child(2) span {
 
 .close-button:hover {
   cursor: pointer;
+}
+
+.polutan {
+  max-width: 1150px; /* Lebar maksimum form */
+  margin: 20px auto; /* Posisi tengah form */
+  
+  padding: 20px; /* Padding pada form */
+  background-color: #f9f9f9; /* Warna latar belakang form */
+  border-radius: 10px; /* Radius sudut form */
+  background-color: #ffff; /* Warna latar belakang form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.polutan h2 {
+  font-size: 24px;
+  text-align: center;
+  color: hsl(230, 75%, 15%);
+}
+
+.polutan th,
+.polutan td {
+  color: hsl(230, 75%, 15%);
 }
 
 /* CSS untuk tabel */
@@ -813,8 +936,9 @@ tr:nth-child(5) td:nth-child(2) span {
 }
 
 .data table th {
-  background-color: #f2f2f2;
+  background-color: rgba(135, 206, 250, 0.5);
 }
+
 
 /* CSS untuk tabel */
 .field-researcher {
@@ -847,7 +971,7 @@ tr:nth-child(5) td:nth-child(2) span {
 }
 
 .field-researcher table th {
-  background-color: #f2f2f2;
+  background-color: rgba(135, 206, 250, 0.5);
 }
 
 /*=============== BREAKPOINTS ===============*/
